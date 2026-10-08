@@ -82,14 +82,18 @@ public class Recetas extends javax.swing.JFrame {
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 180, -1));
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 80, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Jesus Gonzales Mendoza", "Sebastian Quispe Zuñiga", "Alonso Castillo Mamani", "Patricia Torres Sillva", "Carman Flores Vega" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Paracetamol", "Omeprazol", "Amoxicilina", "Ibuprofeno", "Carbonato de calcio" }));
         jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 150, -1));
 
+        jToggleButton1.setBackground(new java.awt.Color(102, 102, 102));
         jToggleButton1.setText("Modificar ");
+        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 200, 30));
 
+        jToggleButton2.setBackground(new java.awt.Color(102, 102, 102));
         jToggleButton2.setText("Agregar Receta");
+        jToggleButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 200, 30));
 
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));

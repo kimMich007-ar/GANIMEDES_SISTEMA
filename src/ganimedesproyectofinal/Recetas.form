@@ -176,11 +176,11 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
             <StringItem index="0" value="Seleccionar"/>
-            <StringItem index="1" value="Jesus Gonzales Mendoza"/>
-            <StringItem index="2" value="Sebastian Quispe Zu&#xf1;iga"/>
-            <StringItem index="3" value="Alonso Castillo Mamani"/>
-            <StringItem index="4" value="Patricia Torres Sillva"/>
-            <StringItem index="5" value="Carman Flores Vega"/>
+            <StringItem index="1" value="Paracetamol"/>
+            <StringItem index="2" value="Omeprazol"/>
+            <StringItem index="3" value="Amoxicilina"/>
+            <StringItem index="4" value="Ibuprofeno"/>
+            <StringItem index="5" value="Carbonato de calcio"/>
           </StringArray>
         </Property>
       </Properties>
@@ -198,7 +198,13 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="jToggleButton1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Modificar "/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -208,7 +214,13 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="jToggleButton2">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Agregar Receta"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

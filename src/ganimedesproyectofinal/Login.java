@@ -37,23 +37,24 @@ public class Login extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField2.addActionListener(this::jTextField2ActionPerformed);
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 260, 30));
 
+        jToggleButton2.setBackground(new java.awt.Color(102, 102, 102));
         jToggleButton2.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         jToggleButton2.setText("Salir");
         jToggleButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToggleButton2.addActionListener(this::jToggleButton2ActionPerformed);
         getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 80, -1));
 
+        jToggleButton1.setBackground(new java.awt.Color(102, 102, 102));
         jToggleButton1.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         jToggleButton1.setText("Ingresar");
         jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -82,11 +83,11 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("CENTRO DE SALUD GANIMEDES");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IMAGEN1.1.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 713, -1));
-
         jTextField3.addActionListener(this::jTextField3ActionPerformed);
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 260, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IMAGEN1.1.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 713, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

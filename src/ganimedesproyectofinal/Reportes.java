@@ -40,10 +40,13 @@ public class Reportes extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -51,14 +54,14 @@ public class Reportes extends javax.swing.JFrame {
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooser1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, 140, -1));
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 140, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Jesus Gonzales Mendoza", "Sebastian Quispe Zuñiga", "Alonso Castillo Mamani", "Patricia Torres Sillva", "Carman Flores Vega" }));
         jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Medicina general", "Odontologia", "Enfermeria", "Nutrición", "Obstetricia", "Psicología" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, -1, -1));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -106,38 +109,49 @@ public class Reportes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 970, 460));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 970, 430));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Fecha:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Filtros de búsqueda:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 200, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DNI:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jTextField7.addActionListener(this::jTextField7ActionPerformed);
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 80, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 80, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Médico:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
 
+        jToggleButton1.setBackground(new java.awt.Color(102, 102, 102));
         jToggleButton1.setText("Buscar");
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 200, 30));
+        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 200, 30));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Especialidad:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+
+        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 970, 130));
+
+        jLabel8.setFont(new java.awt.Font("Lucida Fax", 0, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Reporte General de Citas");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1000, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IMAGEN1.2.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, -1));
@@ -154,6 +168,9 @@ public class Reportes extends javax.swing.JFrame {
         jMenu1.setForeground(new java.awt.Color(51, 51, 51));
         jMenu1.setText("Reportes");
         jMenuBar1.add(jMenu1);
+
+        jMenu3.setText("Recetas");
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -203,8 +220,11 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

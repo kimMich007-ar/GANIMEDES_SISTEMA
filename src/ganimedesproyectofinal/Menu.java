@@ -15,7 +15,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         
         
-        this.setSize(1000, 700);           
+        this.setSize(1000, 600);           
         this.setLocationRelativeTo(null); 
         this.setResizable(false);         
     }
@@ -36,7 +36,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
@@ -46,13 +45,17 @@ public class Menu extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
+        jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IMAGEN1.2.png"))); // NOI18N
@@ -63,120 +66,94 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Lucida Fax", 0, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CENTRO DE SALUD GANIMEDES");
+        jLabel2.setText("Registro General de Citas");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1000, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("DNI:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 220, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 50, -1));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Nombres:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 200, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 110, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Pago:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Médico:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
 
         jTextField2.addActionListener(this::jTextField2ActionPerformed);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 130, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 90, -1));
 
-        jTextField4.addActionListener(this::jTextField4ActionPerformed);
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 80, -1));
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooser1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 140, -1));
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 140, -1));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Apellidos:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
 
         jTextField5.setText("S/.");
         jTextField5.addActionListener(this::jTextField5ActionPerformed);
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 80, -1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 80, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Jesus Gonzales Mendoza", "Sebastian Quispe Zuñiga", "Alonso Castillo Mamani", "Patricia Torres Sillva", "Carman Flores Vega" }));
         jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Caso:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 60, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 70, -1));
 
-        jLabel11.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Especialidad:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, -1, -1));
 
         jTextField3.addActionListener(this::jTextField3ActionPerformed);
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 290, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 290, -1));
 
         jTextField6.addActionListener(this::jTextField6ActionPerformed);
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 290, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 290, -1));
+
+        jTextField7.addActionListener(this::jTextField7ActionPerformed);
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 130, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Medicina general", "Odontologia", "Enfermeria", "Nutrición", "Obstetricia", "Psicología" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 160, -1, -1));
 
-        jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jToggleButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jToggleButton1.setText("Eliminar");
+        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 130, 40));
 
-        jTable1.setBackground(new java.awt.Color(153, 153, 153));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, "", null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "N°", "Nombres", "Apellidos", "DNI", "Caso", "Especialidad", "Medico", "Fecha"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-        }
+        jToggleButton4.setBackground(new java.awt.Color(102, 102, 102));
+        jToggleButton4.setText("Añadir");
+        jToggleButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 130, 40));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 970, 400));
+        jToggleButton6.setBackground(new java.awt.Color(102, 102, 102));
+        jToggleButton6.setText("Modificar");
+        jToggleButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 130, 40));
+
+        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 960, 310));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IMAGEN1.2.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
@@ -194,6 +171,9 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.setText("Reportes");
         jMenuBar1.add(jMenu1);
 
+        jMenu3.setText("Recetas");
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -202,10 +182,6 @@ public class Menu extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
@@ -222,6 +198,10 @@ public class Menu extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,6 +235,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -265,13 +246,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton6;
     // End of variables declaration//GEN-END:variables
 }
