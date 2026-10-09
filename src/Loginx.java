@@ -6,7 +6,21 @@
 public class Loginx extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Loginx.class.getName());
-
+    
+    private int intentos = 0;
+    
+    private boolean validarCredenciales(String usuario_ingresado, String contraseña_ingresada) {
+        try (java.io.BufferedReader dato1 = new java.io.BufferedReader(new java.io.FileReader("usuarios.txt"))){
+            return dato1.lines()
+                    .map(linea -> linea.split(","))
+                    .filter(datos -> datos.length >=2)
+                    .anyMatch(datos -> datos[0].trim().equals(usuario_ingresado) && datos[1].trim().equals(contraseña_ingresada));
+                            
+        }
+        catch (java.io.IOException e){
+            return false;
+        }
+    }
     /**
      * Creates new form Loginx
      */
@@ -28,13 +42,13 @@ public class Loginx extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        titulo_login = new javax.swing.JLabel();
+        cartel_usuario = new javax.swing.JLabel();
+        cartel_contraseña = new javax.swing.JLabel();
+        texto_usuario = new javax.swing.JTextField();
+        boton_ingresar = new javax.swing.JToggleButton();
+        boton_salir = new javax.swing.JToggleButton();
+        texto_contraseña = new javax.swing.JPasswordField();
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -45,64 +59,85 @@ public class Loginx extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(700, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Lucida Fax", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CENTRO DE SALUD GANIMEDES");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+        titulo_login.setFont(new java.awt.Font("Lucida Fax", 0, 36)); // NOI18N
+        titulo_login.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_login.setText("CENTRO DE SALUD GANIMEDES");
+        getContentPane().add(titulo_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("USUARIO:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
+        cartel_usuario.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        cartel_usuario.setForeground(new java.awt.Color(0, 0, 0));
+        cartel_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartel_usuario.setText("USUARIO:");
+        getContentPane().add(cartel_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("CONTRASEÑA:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+        cartel_contraseña.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        cartel_contraseña.setForeground(new java.awt.Color(0, 0, 0));
+        cartel_contraseña.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartel_contraseña.setText("CONTRASEÑA:");
+        getContentPane().add(cartel_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
 
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 260, 30));
+        texto_usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        texto_usuario.addActionListener(this::texto_usuarioActionPerformed);
+        getContentPane().add(texto_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 260, 30));
 
-        jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 260, 30));
+        boton_ingresar.setBackground(new java.awt.Color(102, 102, 102));
+        boton_ingresar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        boton_ingresar.setText("Ingresar");
+        boton_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_ingresar.addActionListener(this::boton_ingresarActionPerformed);
+        getContentPane().add(boton_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 220, -1));
 
-        jToggleButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jToggleButton1.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
-        jToggleButton1.setText("Ingresar");
-        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 220, -1));
-
-        jToggleButton2.setBackground(new java.awt.Color(102, 102, 102));
-        jToggleButton2.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
-        jToggleButton2.setText("Salir");
-        jToggleButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jToggleButton2.addActionListener(this::jToggleButton2ActionPerformed);
-        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 80, -1));
+        boton_salir.setBackground(new java.awt.Color(102, 102, 102));
+        boton_salir.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        boton_salir.setText("Salir");
+        boton_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_salir.addActionListener(this::boton_salirActionPerformed);
+        getContentPane().add(boton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 80, -1));
+        getContentPane().add(texto_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 262, 260, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void texto_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_usuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_texto_usuarioActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void boton_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ingresarActionPerformed
+        String usuario_ingresado = texto_usuario.getText().trim();
+    String contraseña_ingresada = new String(texto_contraseña.getPassword()).trim();
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    if (validarCredenciales(usuario_ingresado, contraseña_ingresada)) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Acceso concedido");
+        
+        Registro_Citas citas = new Registro_Citas();
+        citas.setVisible(true);
+        citas.setLocationRelativeTo(null);
+        this.dispose();
+    } else {
+        intentos++;
+        if (intentos >= 3) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "ERROR MUCHOS INTENTOS", 
+                "ACCESO BLOQUEADO", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Usuario o contraseña incorrectos.\nLlevas " + intentos + " de 3 intentos.", 
+                "Datos incorrectos", 
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            
+            texto_contraseña.setText("");
+            texto_usuario.requestFocus();
+        }
+    } 
+       
+    }//GEN-LAST:event_boton_ingresarActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    private void boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_boton_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,13 +165,13 @@ public class Loginx extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JToggleButton boton_ingresar;
+    private javax.swing.JToggleButton boton_salir;
+    private javax.swing.JLabel cartel_contraseña;
+    private javax.swing.JLabel cartel_usuario;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JPasswordField texto_contraseña;
+    private javax.swing.JTextField texto_usuario;
+    private javax.swing.JLabel titulo_login;
     // End of variables declaration//GEN-END:variables
 }
