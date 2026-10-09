@@ -87,6 +87,7 @@ public class Reportes_ extends javax.swing.JFrame {
         boton_buscar.setBackground(new java.awt.Color(102, 102, 102));
         boton_buscar.setText("Buscar");
         boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_buscar.addActionListener(this::boton_buscarActionPerformed);
         getContentPane().add(boton_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 200, 30));
 
         jLabel8.setFont(new java.awt.Font("Lucida Fax", 0, 36)); // NOI18N
@@ -235,6 +236,56 @@ public class Reportes_ extends javax.swing.JFrame {
         Recetas_ f = new Recetas_();
         f.setVisible(true);
     }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void boton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_buscarActionPerformed
+        // 1. Obtener lo que el usuario escribió o seleccionó en los filtros
+    String dniBuscado = texto_dni_reportes.getText().trim();
+    String especialidadFiltro = lista_especialidad_reportes.getSelectedItem().toString();
+    String medicoFiltro = lista_medico_reportes.getSelectedItem().toString();
+    
+    // Obtener el modelo de tu tabla para agregarle filas
+    javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tabla_reporte.getModel();
+    modelo.setRowCount(0); // Limpiar la tabla antes de mostrar nuevos resultados
+    
+    int contador = 1; // Para la columna N°
+    
+    try {
+        // 2. Leer el archivo línea por línea
+        java.io.File archivo = new java.io.File("registros.txt");
+        java.util.Scanner lector = new java.util.Scanner(archivo);
+        
+        while (lector.hasNextLine()) {
+            String linea = lector.nextLine();
+            String[] datos = linea.split(",");
+            
+            if (datos.length >= 8) {
+                String nombre = datos[0];
+                String apellido = datos[1];
+                String dni = datos[2];
+                String caso = datos[3];
+                String especialidad = datos[4];
+                String medico = datos[5];
+                String fecha = datos[6];
+                String pago = datos[7];
+                
+                // 3. Aplicar filtros 
+                boolean coincideDni = dniBuscado.isEmpty() || dni.equals(dniBuscado);
+                boolean coincideEspec = especialidadFiltro.equals("Seleccionar") || especialidad.equals(especialidadFiltro);
+                boolean coincideMedico = medicoFiltro.equals("Seleccionar") || medico.equals(medicoFiltro);
+                
+                // Si cumple con los filtros, se agrega a la tabla
+                if (coincideDni && coincideEspec && coincideMedico) {
+                    modelo.addRow(new Object[]{contador, nombre, apellido, dni, caso, especialidad, medico, fecha, pago});
+                    contador++;
+                }
+            }
+        }
+        lector.close();
+        
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error al buscar: " + e.getMessage());
+    }
+    }//GEN-LAST:event_boton_buscarActionPerformed
 
     /**
      * @param args the command line arguments

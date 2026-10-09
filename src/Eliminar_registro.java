@@ -54,7 +54,7 @@ public class Eliminar_registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // 1. Capturar el DNI que escribiste en la caja de texto
+        // 1. Capturar el DNI escrito en la caja de texto
     String dniBuscado = texto_dni.getText().trim();
     java.util.List<String> listaLineas = new java.util.ArrayList<>();
     

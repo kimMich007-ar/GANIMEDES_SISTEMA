@@ -231,7 +231,42 @@ public class Registro_Citas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void boton_añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadirActionPerformed
+        try {
+        // 1. Obtener la fecha seleccionada del calendario y formatearla
+        String fechaStr = "";
+        if (calendario.getDate() != null) {
+            fechaStr = new java.text.SimpleDateFormat("dd/MM/yyyy").format(calendario.getDate());
+        }
         
+        // 2. Construir la línea de texto uniendo todos los campos con comas (CSV)
+        String nuevaLinea = texto_nombre.getText().trim() + "," +
+                            texto_apellido.getText().trim() + "," +
+                            texto_dni.getText().trim() + "," +
+                            texto_caso.getText().trim() + "," +
+                            lista_especialidad.getSelectedItem().toString() + "," +
+                            lista_medico.getSelectedItem().toString() + "," +
+                            fechaStr + "," +
+                            texto_pago.getText().trim();
+                            
+        // 3. Guardar la línea al final del archivo registros.txt (usando append = true para no borrar lo anterior)
+        try (java.io.FileWriter fw = new java.io.FileWriter("registros.txt", true);
+             java.io.BufferedWriter bw = new java.io.BufferedWriter(fw);
+             java.io.PrintWriter out = new java.io.PrintWriter(bw)) {
+            out.println(nuevaLinea);
+        }
+        
+        javax.swing.JOptionPane.showMessageDialog(this, "¡Cita añadida y guardada con éxito!");
+        
+        // 4. Limpiar los campos después de guardar (opcional)
+        texto_nombre.setText("");
+        texto_apellido.setText("");
+        texto_dni.setText("");
+        texto_caso.setText("");
+        texto_pago.setText("");
+        
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error al guardar la cita: " + e.getMessage());
+    }
     }//GEN-LAST:event_boton_añadirActionPerformed
 
     private void boton_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_modificarActionPerformed
