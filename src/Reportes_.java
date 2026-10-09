@@ -4,6 +4,39 @@
  * @author valez
  */
 public class Reportes_ extends javax.swing.JFrame {
+    private void cargarTablaReportes() {
+        // Asegúrate de que "tabla_reporte" sea el nombre real de tu tabla en la ventana de Reportes
+        javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tabla_reporte.getModel();
+        modelo.setRowCount(0); // Limpia la tabla
+
+        java.io.File archivo = new java.io.File("registros.txt");
+        if (!archivo.exists()) {
+            return; 
+        }
+
+        try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(archivo))) {
+            String linea;
+            int contador = 1;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (datos.length >= 8) {
+                    modelo.addRow(new Object[]{
+                        contador++,
+                        datos[0], // Nombres
+                        datos[1], // Apellidos
+                        datos[2], // DNI
+                        datos[3], // Caso
+                        datos[4], // Especialidad
+                        datos[5], // Médico
+                        datos[6], // Fecha
+                        "S/. " + datos[7] // Pago
+                    });
+                }
+            }
+        } catch (Exception e) {
+            // Error silencioso
+        }
+    }
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Reportes_.class.getName());
 
@@ -12,6 +45,8 @@ public class Reportes_ extends javax.swing.JFrame {
      */
     public Reportes_() {
         initComponents();
+        
+        cargarTablaReportes(); //esto lee bloc de notas y lo carga en tabla
         
         this.setSize(1000, 700);           
         this.setLocationRelativeTo(null); 
@@ -27,20 +62,20 @@ public class Reportes_ extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        boton_buscar = new javax.swing.JToggleButton();
         jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        texto_dni_reportes = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        lista_especialidad_reportes = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        lista_medico_reportes = new javax.swing.JComboBox<>();
+        calendario_reportes = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla_reporte = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -49,14 +84,16 @@ public class Reportes_ extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        boton_buscar.setBackground(new java.awt.Color(102, 102, 102));
+        boton_buscar.setText("Buscar");
+        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(boton_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 200, 30));
+
         jLabel8.setFont(new java.awt.Font("Lucida Fax", 0, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Reporte General de Citas");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1000, -1));
-
-        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 970, 130));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -68,46 +105,44 @@ public class Reportes_ extends javax.swing.JFrame {
         jLabel4.setText("DNI:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        jTextField7.addActionListener(this::jTextField7ActionPerformed);
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 80, -1));
+        texto_dni_reportes.addActionListener(this::texto_dni_reportesActionPerformed);
+        getContentPane().add(texto_dni_reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 80, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Especialidad:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Medicina general", "Odontologia", "Enfermeria", "Nutrición", "Obstetricia", "Psicología" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, -1));
+        lista_especialidad_reportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Medicina general", "Odontologia", "Enfermeria", "Nutrición", "Obstetricia", "Psicología" }));
+        getContentPane().add(lista_especialidad_reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Médico:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Jesus Gonzales Mendoza", "Sebastian Quispe Zuñiga", "Alonso Castillo Mamani", "Patricia Torres Sillva", "Carman Flores Vega" }));
-        jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, -1, -1));
+        lista_medico_reportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Jesus Gonzales Mendoza", "Sebastian Quispe Zuñiga", "Alonso Castillo Mamani", "Patricia Torres Sillva", "Carman Flores Vega" }));
+        lista_medico_reportes.addActionListener(this::lista_medico_reportesActionPerformed);
+        getContentPane().add(lista_medico_reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, -1, -1));
+
+        calendario_reportes.setBackground(new java.awt.Color(255, 255, 255));
+        calendario_reportes.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(calendario_reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 140, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Fecha:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 140, -1));
-
-        jToggleButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jToggleButton1.setText("Buscar");
-        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 200, 30));
+        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 970, 130));
 
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setBackground(new java.awt.Color(153, 153, 153));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_reporte.setBackground(new java.awt.Color(153, 153, 153));
+        tabla_reporte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabla_reporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, "", null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -146,7 +181,7 @@ public class Reportes_ extends javax.swing.JFrame {
                 "N°", "Nombres", "Apellidos", "DNI", "Caso", "Especialidad", "Medico", "Fecha", "Pago"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla_reporte);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 970, 430));
 
@@ -156,6 +191,11 @@ public class Reportes_ extends javax.swing.JFrame {
         jMenu2.setBackground(new java.awt.Color(51, 51, 51));
         jMenu2.setForeground(new java.awt.Color(51, 51, 51));
         jMenu2.setText("Registro de Citas");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         jMenu1.setBackground(new java.awt.Color(51, 51, 51));
@@ -164,6 +204,11 @@ public class Reportes_ extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Recetas");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -171,13 +216,25 @@ public class Reportes_ extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void texto_dni_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_dni_reportesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_texto_dni_reportesActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void lista_medico_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lista_medico_reportesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_lista_medico_reportesActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        this.setVisible(false);
+        Registro_Citas c = new Registro_Citas();
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        this.setVisible(false);
+        Recetas_ f = new Recetas_();
+        f.setVisible(true);
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -203,11 +260,10 @@ public class Reportes_ extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Reportes_().setVisible(true));
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JToggleButton boton_buscar;
+    private com.toedter.calendar.JDateChooser calendario_reportes;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -220,8 +276,9 @@ public class Reportes_ extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JComboBox<String> lista_especialidad_reportes;
+    private javax.swing.JComboBox<String> lista_medico_reportes;
+    private javax.swing.JTable tabla_reporte;
+    private javax.swing.JTextField texto_dni_reportes;
     // End of variables declaration//GEN-END:variables
 }

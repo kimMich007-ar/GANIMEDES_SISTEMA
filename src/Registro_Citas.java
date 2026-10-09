@@ -5,6 +5,7 @@
  */
 public class Registro_Citas extends javax.swing.JFrame {
     
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Registro_Citas.class.getName());
 
     /**
@@ -12,6 +13,9 @@ public class Registro_Citas extends javax.swing.JFrame {
      */
     public Registro_Citas() {
         initComponents();
+        
+        
+        
         this.setSize(1000, 600);           
         this.setLocationRelativeTo(null); 
         this.setResizable(false);  
@@ -27,7 +31,6 @@ public class Registro_Citas extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -36,17 +39,18 @@ public class Registro_Citas extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jTextField5 = new javax.swing.JTextField();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        texto_nombre = new javax.swing.JTextField();
+        texto_apellido = new javax.swing.JTextField();
+        texto_dni = new javax.swing.JTextField();
+        texto_caso = new javax.swing.JTextField();
+        lista_especialidad = new javax.swing.JComboBox<>();
+        lista_medico = new javax.swing.JComboBox<>();
+        calendario = new com.toedter.calendar.JDateChooser();
+        texto_pago = new javax.swing.JTextField();
+        boton_añadir = new javax.swing.JToggleButton();
+        boton_modificar = new javax.swing.JToggleButton();
+        boton_eliminar = new javax.swing.JToggleButton();
+        jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -60,9 +64,6 @@ public class Registro_Citas extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Registro General de Citas");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1000, -1));
-
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 960, 310));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -106,46 +107,52 @@ public class Registro_Citas extends javax.swing.JFrame {
         jLabel5.setText("Pago:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, -1, -1));
 
-        jTextField6.addActionListener(this::jTextField6ActionPerformed);
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 290, -1));
+        texto_nombre.addActionListener(this::texto_nombreActionPerformed);
+        getContentPane().add(texto_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 290, -1));
 
-        jTextField3.addActionListener(this::jTextField3ActionPerformed);
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 290, -1));
+        texto_apellido.addActionListener(this::texto_apellidoActionPerformed);
+        getContentPane().add(texto_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 290, -1));
 
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 90, -1));
+        texto_dni.addActionListener(this::texto_dniActionPerformed);
+        getContentPane().add(texto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 90, -1));
 
-        jTextField7.addActionListener(this::jTextField7ActionPerformed);
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 130, -1));
+        texto_caso.addActionListener(this::texto_casoActionPerformed);
+        getContentPane().add(texto_caso, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 130, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Medicina general", "Odontologia", "Enfermeria", "Nutrición", "Obstetricia", "Psicología" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 160, -1, -1));
+        lista_especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Medicina general", "Odontologia", "Enfermeria", "Nutrición", "Obstetricia", "Psicología" }));
+        getContentPane().add(lista_especialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 160, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Jesus Gonzales Mendoza", "Sebastian Quispe Zuñiga", "Alonso Castillo Mamani", "Patricia Torres Sillva", "Carman Flores Vega" }));
-        jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+        lista_medico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Jesus Gonzales Mendoza", "Sebastian Quispe Zuñiga", "Alonso Castillo Mamani", "Patricia Torres Sillva", "Carman Flores Vega" }));
+        lista_medico.addActionListener(this::lista_medicoActionPerformed);
+        getContentPane().add(lista_medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
-        jDateChooser1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 140, -1));
+        calendario.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(calendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 140, -1));
 
-        jTextField5.setText("S/.");
-        jTextField5.addActionListener(this::jTextField5ActionPerformed);
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 80, -1));
+        texto_pago.setText("S/.");
+        texto_pago.addActionListener(this::texto_pagoActionPerformed);
+        getContentPane().add(texto_pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 80, -1));
 
-        jToggleButton4.setBackground(new java.awt.Color(102, 102, 102));
-        jToggleButton4.setText("Añadir");
-        jToggleButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 130, 40));
+        boton_añadir.setBackground(new java.awt.Color(102, 102, 102));
+        boton_añadir.setText("Añadir");
+        boton_añadir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_añadir.addActionListener(this::boton_añadirActionPerformed);
+        getContentPane().add(boton_añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 130, 40));
 
-        jToggleButton6.setBackground(new java.awt.Color(102, 102, 102));
-        jToggleButton6.setText("Modificar");
-        jToggleButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 130, 40));
+        boton_modificar.setBackground(new java.awt.Color(102, 102, 102));
+        boton_modificar.setText("Modificar");
+        boton_modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_modificar.addActionListener(this::boton_modificarActionPerformed);
+        getContentPane().add(boton_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 130, 40));
 
-        jToggleButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jToggleButton1.setText("Eliminar");
-        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 130, 40));
+        boton_eliminar.setBackground(new java.awt.Color(102, 102, 102));
+        boton_eliminar.setText("Eliminar");
+        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_eliminar.addActionListener(this::boton_eliminarActionPerformed);
+        getContentPane().add(boton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 130, 40));
+
+        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 960, 310));
 
         jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
         jMenuBar1.setForeground(new java.awt.Color(51, 51, 51));
@@ -153,14 +160,29 @@ public class Registro_Citas extends javax.swing.JFrame {
         jMenu2.setBackground(new java.awt.Color(51, 51, 51));
         jMenu2.setForeground(new java.awt.Color(51, 51, 51));
         jMenu2.setText("Registro de Citas");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         jMenu1.setBackground(new java.awt.Color(51, 51, 51));
         jMenu1.setForeground(new java.awt.Color(51, 51, 51));
         jMenu1.setText("Reportes");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Recetas");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -168,29 +190,59 @@ public class Registro_Citas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void texto_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_texto_nombreActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void texto_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_apellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_texto_apellidoActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void texto_dniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_dniActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_texto_dniActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void texto_casoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_casoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_texto_casoActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void lista_medicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lista_medicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_lista_medicoActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void texto_pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_pagoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_texto_pagoActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        this.setVisible(false);
+        Reportes_ d = new Reportes_();
+        d.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        this.setVisible(false);
+        Recetas_ e = new Recetas_();
+        e.setVisible(true);
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void boton_añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadirActionPerformed
+        
+    }//GEN-LAST:event_boton_añadirActionPerformed
+
+    private void boton_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_modificarActionPerformed
+        // CREAS Y MUESTRAS VENTANA DE MODIFICACION
+        Modificacion_registro modificar = new Modificacion_registro();
+        modificar.setVisible(true);
+    }//GEN-LAST:event_boton_modificarActionPerformed
+
+    private void boton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_eliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,9 +270,10 @@ public class Registro_Citas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JToggleButton boton_añadir;
+    private javax.swing.JToggleButton boton_eliminar;
+    private javax.swing.JToggleButton boton_modificar;
+    private com.toedter.calendar.JDateChooser calendario;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -235,13 +288,12 @@ public class Registro_Citas extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JComboBox<String> lista_especialidad;
+    private javax.swing.JComboBox<String> lista_medico;
+    private javax.swing.JTextField texto_apellido;
+    private javax.swing.JTextField texto_caso;
+    private javax.swing.JTextField texto_dni;
+    private javax.swing.JTextField texto_nombre;
+    private javax.swing.JTextField texto_pago;
     // End of variables declaration//GEN-END:variables
 }

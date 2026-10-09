@@ -105,7 +105,7 @@ public class Loginx extends javax.swing.JFrame {
 
     private void boton_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ingresarActionPerformed
         String usuario_ingresado = texto_usuario.getText().trim();
-    String contraseña_ingresada = new String(texto_contraseña.getPassword()).trim();
+        String contraseña_ingresada = new String(texto_contraseña.getPassword()).trim();
 
     if (validarCredenciales(usuario_ingresado, contraseña_ingresada)) {
         javax.swing.JOptionPane.showMessageDialog(this, "Acceso concedido");
